@@ -219,7 +219,8 @@ const forgotPassword = async (req, res, next) => {
     await user.save();
 
     // Step 5: Construct the password reset link
-    const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
+    // Read CLIENT_URL from environment variables (defaults to production Vercel frontend URL)
+    const clientUrl = (process.env.CLIENT_URL || 'https://expense-wise-frontend-three.vercel.app').replace(/\/+$/, '');
     const resetUrl = `${clientUrl}/reset-password/${resetToken}`;
 
     // Step 6: Compose and send email via Nodemailer

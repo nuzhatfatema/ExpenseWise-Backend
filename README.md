@@ -186,8 +186,8 @@ CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 EMAIL_USER=your_email@gmail.com
 EMAIL_PASS=your_gmail_app_password
 
-# Frontend Client URL
-CLIENT_URL=http://localhost:5173
+# Frontend Client URL (Local: http://localhost:5173 | Production: https://expense-wise-frontend-three.vercel.app)
+CLIENT_URL=https://expense-wise-frontend-three.vercel.app
 ```
 
 > [!WARNING]
