@@ -20,6 +20,20 @@ const { Parser } = require('json2csv');
 // Import PDFKit for PDF report generation
 const PDFDocument = require('pdfkit');
 
+// Statically require standard PDFKit fonts so Vercel NFT/Serverless bundler includes them in Lambda
+try {
+  require('pdfkit/standard-fonts/Helvetica');
+  require('pdfkit/standard-fonts/HelveticaBold');
+  require('pdfkit/standard-fonts/HelveticaOblique');
+  require('pdfkit/standard-fonts/HelveticaBoldOblique');
+  require('pdfkit/standard-fonts/TimesRoman');
+  require('pdfkit/standard-fonts/TimesBold');
+  require('pdfkit/standard-fonts/Courier');
+  require('pdfkit/standard-fonts/CourierBold');
+} catch (fontLoadErr) {
+  // Graceful fallback if bundled in alternative runtime
+}
+
 // Import Nodemailer helper for email notifications
 const { sendEmail } = require('../config/nodemailer');
 
